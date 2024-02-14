@@ -9,15 +9,12 @@ require("dotenv").config({ path: "./.env" })
 //db
 mongoose.connect(process.env.MONGO_URL)
 const app = express()
-//moddleware
-app.use(express.json())
-app.use(cookieParser())
-app.use(cors({
-    origin: "https://url-shortner-eiwf.onrender.com/",
-    credentials: true
-}))
-
 app.use(express.static(path.join(__dirname, "dist")))
+//moddleware
+app.use(cookieParser())
+app.use(cors())
+app.use(express.json())
+
 
 
 
